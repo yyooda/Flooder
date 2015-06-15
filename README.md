@@ -1,7 +1,7 @@
-## Flooder is data transfer
+## Flooder is data transfer to fluentd
 Windows環境で動作し、Fluentdサーバーへデータ転送を行う事ができます
 
-##supports
+##Supports
 * text file  
 * iis access log  
 * eventlog  
@@ -9,14 +9,14 @@ Windows環境で動作し、Fluentdサーバーへデータ転送を行う事が
 
 send to fluentd.  
 
-##fluentd settings sample
+##Fluentd settings sample
 ```
 <source>
   type forward
   port 9901
 </source>
 ```
-##flooder settings sample
+##About Flooder settings
 ```App.config
 <configuration>
     <!-- カスタマイズされたコンフィグセクションを読み込むのでその設定を行います -->
@@ -101,20 +101,20 @@ send to fluentd.
 </configuration>
 ```
 
-##specification
-### implement [CircuitBreaker](http://martinfowler.com/bliki/CircuitBreaker.html)
+##Specification
+###Implement [CircuitBreaker](http://martinfowler.com/bliki/CircuitBreaker.html)
 fluentd サーバーがダウンした時は待機します
 
-###buffering capacity 10000
+###Buffering capacity 10000
 データ転送が失敗した時はバッファリングを最大10000件まで行います
 
-###when log rotation
+###When log rotation
 Flooderはログファイルのタイムスタンプを保持し、ローテーションの発生をファイル名変更で検知して最新のタイムスタンプを持つファイルを追跡しています
 
-### quick access to a huge file
+###Quick access to a huge file
 Flooderは前回読み込み位置へseekしてからデータを読み取ります
 
-##dependency
+##Dependency
 MsgPack  
 NLog  
 System.Reactive.Core  
